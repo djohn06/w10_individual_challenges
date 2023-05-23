@@ -43,7 +43,22 @@ class BankStatement {
     }
     return 0
   }
+
+  printStatement() {
+    console.log(`date || credit || debit || balance`)
+    this.account.forEach( transaction => 
+      console.log(`${transaction.date} || ${transaction.credit} || ${transaction.debit} || ${transaction.balance}`)
+    );
+  }
 }
 
 // eslint-disable-next-line no-undef
 module.exports = BankStatement;
+
+// input into node:
+// const BankStatement = require('./BankStatement');
+const bankStatement = new BankStatement;
+bankStatement.deposit("10/01/2023", 1000);
+bankStatement.deposit("13/01/2023", 2000);
+bankStatement.withdraw("14/01/2023", 500);
+bankStatement.printStatement();
