@@ -7,12 +7,11 @@ class BankStatement {
     const balance = this.bankBalance(amount);
     const transaction = {
       date: date,
-      credit: amount,
+      credit: amount.toFixed(2),
       debit: "",
-      balance: balance
+      balance: balance.toFixed(2)
     };
     this.account.unshift(transaction); // unshift enters new object first in the array
-    console.log(this.account); // DELETE ONCE COMPLETE
   }
 
   withdraw(date, amount) {
@@ -20,11 +19,10 @@ class BankStatement {
     const transaction = {
       date: date,
       credit: "",
-      debit: amount,
-      balance: balance
+      debit: amount.toFixed(2),
+      balance: balance.toFixed(2)
     };
     this.account.unshift(transaction);
-    console.log(this.account); // DELETE ONCE COMPLETE
   }
 
   // this function is called in the deposit & withdraw methods
