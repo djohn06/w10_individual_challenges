@@ -5,15 +5,19 @@ class BankStatement {
 
   deposit(date, amount) {
     const balance = this.bankBalance(amount);
+    // creates a new object with all the transaction details
     const transaction = {
       date: date,
+      // .toFixed adds two decimal places to the amount
       credit: amount.toFixed(2),
       debit: "",
       balance: balance.toFixed(2)
     };
-    this.account.unshift(transaction); // unshift enters new object first in the array
+    // unshift pushes new object as the first in the array
+    this.account.unshift(transaction);
   }
 
+  // same logic as deposit except for a negative amount inputted
   withdraw(date, amount) {
     const balance = this.bankBalance(-amount);
     const transaction = {
@@ -25,16 +29,19 @@ class BankStatement {
     this.account.unshift(transaction);
   }
 
-  // this function is called in the deposit & withdraw methods
+  // this function is called in the deposit & withdraw methods only.
+  // calculates the total balance by adding new amount to previous total balance.
   bankBalance(amount) {
+    // checking if any transactions have already been inputted
     if (this.account.length > 0) { 
       const previousBalance = parseInt(this.account[0].balance); // parseInt converts a string to a number
       return previousBalance + amount;
     }
+    // if none, return as the first transaction
     return amount;
   }
 
-  // currentBalance used to help for tests passing
+  // currentBalance used to simply help for tests passing
   currentBalance() {
     if (this.account.length > 0) {
       return this.account[0].balance;
@@ -44,6 +51,7 @@ class BankStatement {
 
   printStatement() {
     console.log(`date || credit || debit || balance`)
+    // taking the 'this.account' object's array and printing results for each transaction
     this.account.forEach( transaction => 
       console.log(`${transaction.date} || ${transaction.credit} || ${transaction.debit} || ${transaction.balance}`)
     );
@@ -52,11 +60,3 @@ class BankStatement {
 
 // eslint-disable-next-line no-undef
 module.exports = BankStatement;
-
-// input into node:
-// const BankStatement = require('./BankStatement');
-const bankStatement = new BankStatement;
-bankStatement.deposit("10/01/2023", 1000);
-bankStatement.deposit("13/01/2023", 2000);
-bankStatement.withdraw("14/01/2023", 500);
-bankStatement.printStatement();
