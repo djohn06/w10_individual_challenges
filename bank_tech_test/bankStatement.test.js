@@ -19,8 +19,21 @@ describe("BankStatement", () => {
     bankStatement.deposit("03/01/2023", 300);
     expect(bankStatement.currentBalance()).toEqual(800);
   })
-})
 
-// bankBalance is a function that is specifically used for
-// the deposit function. Change tests and/or use a printBalance function
-// to pull the current balance for the tests. Instead of what I'm doing now.
+  it("recieves a £400 withdrawal", () => {
+    const bankStatement = new BankStatement;
+    bankStatement.deposit("01/01/2023", 500);
+    bankStatement.deposit("03/01/2023", 300);
+    bankStatement.withdraw("01/01/2023", 400);
+    expect(bankStatement.currentBalance()).toEqual(400);
+  })
+
+  it("recieves another £150 withdrawal", () => {
+    const bankStatement = new BankStatement;
+    bankStatement.deposit("01/01/2023", 500);
+    bankStatement.deposit("03/01/2023", 300);
+    bankStatement.withdraw("01/01/2023", 400);
+    bankStatement.withdraw("01/01/2023", 150);
+    expect(bankStatement.currentBalance()).toEqual(250);
+  })
+})
