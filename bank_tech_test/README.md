@@ -1,6 +1,6 @@
 # Bank Tech Test
 
-This is the first question of the individual challenges from Week 9 of the Makers course.
+This is the first question of the individual challenges from Week 10 of the Makers course.
 
 ## Question
 
