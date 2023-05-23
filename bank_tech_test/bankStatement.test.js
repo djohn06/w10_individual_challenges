@@ -32,8 +32,8 @@ describe("BankStatement", () => {
     const bankStatement = new BankStatement;
     bankStatement.deposit("01/01/2023", 500);
     bankStatement.deposit("03/01/2023", 300);
-    bankStatement.withdraw("01/01/2023", 400);
-    bankStatement.withdraw("01/01/2023", 150);
+    bankStatement.withdraw("04/01/2023", 400);
+    bankStatement.withdraw("06/01/2023", 150);
     expect(bankStatement.currentBalance()).toEqual(250);
   })
 })
