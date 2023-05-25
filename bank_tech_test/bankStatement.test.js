@@ -10,14 +10,14 @@ describe("BankStatement", () => {
   it("recieves a £500 deposit", () => {
     const bankStatement = new BankStatement;
     bankStatement.deposit("01/01/2023", 500);
-    expect(bankStatement.currentBalance()).toEqual(500);
+    expect(bankStatement.currentBalance()).toEqual((500).toFixed(2));
   })
 
   it("recieves another £300 deposit", () => {
     const bankStatement = new BankStatement;
     bankStatement.deposit("01/01/2023", 500);
     bankStatement.deposit("03/01/2023", 300);
-    expect(bankStatement.currentBalance()).toEqual(800);
+    expect(bankStatement.currentBalance()).toEqual((800).toFixed(2));
   })
 
   it("recieves a £400 withdrawal", () => {
@@ -25,7 +25,7 @@ describe("BankStatement", () => {
     bankStatement.deposit("01/01/2023", 500);
     bankStatement.deposit("03/01/2023", 300);
     bankStatement.withdraw("01/01/2023", 400);
-    expect(bankStatement.currentBalance()).toEqual(400);
+    expect(bankStatement.currentBalance()).toEqual((400).toFixed(2));
   })
 
   it("recieves another £150 withdrawal", () => {
@@ -34,6 +34,6 @@ describe("BankStatement", () => {
     bankStatement.deposit("03/01/2023", 300);
     bankStatement.withdraw("04/01/2023", 400);
     bankStatement.withdraw("06/01/2023", 150);
-    expect(bankStatement.currentBalance()).toEqual(250);
+    expect(bankStatement.currentBalance()).toEqual((250).toFixed(2));
   })
 })
